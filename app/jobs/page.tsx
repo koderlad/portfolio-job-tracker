@@ -1,16 +1,17 @@
-import { supabase } from "@/lib/supabase/server";
-
+import { JobsData } from "@/lib/data";
 import { Suspense } from "react";
 
-async function JobsData() {
-  const { data: jobs } = await supabase.from("jobs").select();
-  return <pre>{JSON.stringify(jobs, null, 2)}</pre>;
-}
-
-export default function Jobs() {
+export default async function Jobs() {
+  const jobs = await JobsData();
   return (
     <Suspense fallback={<div>Loading jobs...</div>}>
-      <JobsData />
+      {jobs?.map((job) => (
+        <div key={job.id}>
+          <h2>{job.title}</h2>
+          <p>{job.company}</p>
+          <p>{job.status}</p>
+        </div>
+      ))}
     </Suspense>
   );
 }
