@@ -33,10 +33,7 @@ export default function CreateApplications() {
       setSelectedJob(null);
       setShowDropdown(false);
 
-      const timeout = setTimeout(() => {
-        // Optional: clear the message after 3 seconds
-        // You'd need a separate piece of state for this since `state` is owned by useActionState
-      }, 3000);
+      const timeout = setTimeout(() => {}, 3000);
 
       return () => clearTimeout(timeout);
     }
