@@ -2,7 +2,15 @@
 import { db } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
-export default async function submitForm(data: FormData) {
+export type FormState = {
+  success: boolean;
+  message: string;
+};
+
+export async function submitForm(
+  prevState: FormState,
+  data: FormData,
+): Promise<FormState> {
   //Extract the form data
   const jobId = data.get("jobId") as string;
 

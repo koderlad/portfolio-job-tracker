@@ -35,29 +35,24 @@ export default function Table({ applications }: TableProps) {
         </tr>
       </thead>
       <tbody className="bg-white">
-        {applications?.map(
-          (app) => (
-            console.log("Rendering application:", app), // Debug log to verify application data
-            (
-              <tr key={app.appid}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {app.job?.title || "Unknown"}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {app.job?.company || "Unknown"}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {typeof app.applied_on === "string"
-                    ? app.applied_on
-                    : app.applied_on.toLocaleDateString()}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {app.status?.[0]?.name || "Unknown"}
-                </td>
-              </tr>
-            )
-          ),
-        )}
+        {applications?.map((app) => (
+          <tr key={app.appid}>
+            <td className="px-6 py-4 whitespace-nowrap">
+              {app.job?.title || "Unknown"}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              {app.job?.company || "Unknown"}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              {typeof app.applied_on === "string"
+                ? app.applied_on
+                : app.applied_on.toLocaleDateString()}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              {app.status?.[0]?.name || "Unknown"}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
