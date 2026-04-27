@@ -17,12 +17,12 @@ export default function CreateApplications() {
     initialState,
   );
   //Get Status of form submission
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Job[]>([]);
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const debounceRef = useRef<NodeJS.Timeout | null>(null);
-  const formRef = useRef<HTMLFormElement>(null);
+  const [query, setQuery] = useState(""); //Get the current search query from the input field.
+  const [results, setResults] = useState<Job[]>([]); //Get the results of the job search to show in the dropdown.
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null); //Get the currently selected job from the dropdown.
+  const [showDropdown, setShowDropdown] = useState(false); //Get whether to show the dropdown or not based on user interaction and search results.
+  const debounceRef = useRef<NodeJS.Timeout | null>(null); //Get a ref to store the debounce timer for the search input, allowing us to cancel it if the user types again before the timer expires.
+  const formRef = useRef<HTMLFormElement>(null); //Get a ref to the form element, allowing us to reset the form after a successful submission.
 
   useEffect(() => {
     if (state.success) {
