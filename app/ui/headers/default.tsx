@@ -5,7 +5,7 @@ export default function DefaultHeader() {
     <>
       <header className="flex justify-between items-center p-2 md:py-3 md:px-6 bg-white">
         <h1 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-          Job Tracker Project
+          <Link href="/">Job Tracker Project</Link>
         </h1>
         <ul className="flex items-center gap-4 text-sm font-medium text-gray-500">
           <li>
